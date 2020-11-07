@@ -1,4 +1,4 @@
-FROM circleci/python:3.7.5-buster
+FROM circleci/python:3.8.3-buster
 
 WORKDIR /tmp
 
