@@ -1,9 +1,9 @@
-FROM circleci/python:3.8.3-buster
+FROM circleci/python:3.8.11-buster
 
 WORKDIR /tmp
 
 RUN set -ex \
-    && GOURL="https://dl.google.com/go/go1.13.3.linux-amd64.tar.gz" \
+    && GOURL="https://dl.google.com/go/go1.17.linux-amd64.tar.gz" \
     && echo GO URL: $GOURL \
     && curl --silent --show-error --location --fail --retry 3 --output /tmp/go.tgz "${GOURL}" \
     && ls -lha /tmp/go.tgz \
@@ -18,6 +18,6 @@ ENV GOPATH=/home/circleci/go
 ENV PATH /home/circleci/.local/bin:/home/circleci/bin:${GOROOT}/bin:${GOPATH}/bin:${PATH}
 
 RUN go get github.com/aktau/github-release
-RUN go get -u github.com/git-chglog/git-chglog/cmd/git-chglog
+RUN go get github.com/git-chglog/git-chglog/cmd/git-chglog
 
 CMD ["/bin/sh"]
